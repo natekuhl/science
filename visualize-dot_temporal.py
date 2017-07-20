@@ -54,7 +54,7 @@ def run():
     engine = create_engine(get_db_connection_string())
     system_names = get_system_names(engine)
     def make_digraph_adv():
-        G = gv.Graph(format='svg')
+        G = gv.Graph(format='json')
         j = 1
         for name in system_names:
             n = name.split("__")

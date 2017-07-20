@@ -25,10 +25,9 @@ def get_db_connection_string():
 
 def get_args():
     parser = argparse.ArgumentParser(description='Create vizgraph', formatter_class=argparse.RawTextHelpFormatter)
-
     parser.add_argument(
         'schema_prefix',
-        help="first eight digits of system name prefix"
+        help="Specify name of schema from which to draw system names"
     )
     parser.add_argument(
         'dot_file_name',
@@ -66,7 +65,7 @@ def run():
                     G.add_node(name.split("__")[i])
                     G.add_edge(name.split("__")[i],name.split("__")[i+1])
                     i += 1        
-        G.write("{}".format(args.dot_file_name))
+        G.write('{}'.format(args.dot_file_name)) 
     make_digraph_adv()
     #unflatten -l100 -f args.dot_file_name > args.dot_file_name
     #dot -Gdpi=3000 -Gsize=9,15\! -Tpng args.dot_file_name -o args.png_name 

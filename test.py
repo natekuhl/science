@@ -10,4 +10,3 @@ g1.edge('A' , 'B')
 
 
 
-print(g1.source)
