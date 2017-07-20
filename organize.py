@@ -4,8 +4,7 @@ import argparse
 import os
 from path import Path
 import textwrap
-import graphviz as gv
-import re
+import collections
 
 from configobj import ConfigObj
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
@@ -30,29 +29,36 @@ def run():
         """
         sql = """
             select
-            system_name
-            from metadata_characteristictype
+            a.system_name as characteristic_type,c.system_name as dataset
+            from metadata.characteristictype a 
+            join metadata.datasetmembership b on b.characteristic_type_id = a.id
+            join metadata.dataset c on c.id = b.dataset_id
         """
         with engine.connect() as conn:
             result = conn.execute(sql)
-            return [column[0] for column in result.fetchall()]
+            return [column for column in result.fetchall()]
     engine = create_engine(get_db_connection_string())
     system_names = get_system_names(engine)
-    nodes = []
-    for name in system_names:
-        nodes = nodes + name.split("__")
-    
-     
-    count = len(nodes)
-
-    j = 1 
-    for name in system_names:
-        n = name.split("__")
-        i = 0
-        while i <= (len(n)-1):
-            d['key{}'.format(j)]  = '{}'.format(n[i])
+    #print(system_names)
 
 
+    datasets = []
+    for pair in system_names:
+        datasets.append(pair[1])
+
+    #print(datasets)
+    d = collections.defaultdict(dict)
+
+    for pair in system_names:
+        
+
+
+#        n = name.split("__")
+#        i = 0
+#        d['{}'.format(n[i]) = {}
+#        for i in range(len(n)): 
+#            d['{}'.format()] 
+#
 
 
 
@@ -60,26 +66,18 @@ def run():
 
 
 
+
+
+#for row in file_map:
+#    # derive row key from something 
+#    # when using defaultdict, we can skip the next step creating a dictionary on row_key
+#    d[row_key] = {} 
+#    for idx, col in enumerate(row):
+#        d[row_key][idx] = col
+#
 
 
 if __name__ == '__main__':
     run()
 
 
-
-#            while i <= (len(name.split("__"))-1):
-#                if i == 0:
-#                    G.node('1','{}'.format(n[i]))
-#                    i += 1
-#                    j += 1
-#                else:
-#                    if i == 1:
-#                        G.node('{}'.format(j),'{}'.format(n[i]))
-#                        G.edge('1','{}'.format(j))
-#                        i += 1
-#                        j += 1
-#                    else:
-#                        G.node('{}'.format(j),'{}'.format(n[i]))
-#                        G.edge('{}'.format(j-1),'{}'.format(j))
-#                        i += 1
-#                        j += 1
