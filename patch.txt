@@ -1,0 +1,732 @@
+/*
+
+economy
+education
+health_wellness
+housing
+livability
+population_demographics
+public_safety
+technology
+transportation
+environment
+time_series
+citizen_survey
+
+*/
+
+
+/*first degree nodes*/
+
+✓    economy -- poverty
+✓    economy -- income 
+✓    economy -- employment
+✓    eduction -- enrollment;
+✓    eduction -- education_attainment;
+    population_demographics -- age;
+    population_demographics -- households;
+    population_demographics -- race;
+    population_demographics -- immigration;
+    population_demographics -- place_of_birth;
+    population_demographics -- veteran_background;
+    population_demographics -- sex;
+    population_demographics -- marital_status;
+    population_demographics -- mobility;
+    population_demographics -- civilian_pop;
+    transportation -- commuting;
+    transportation -- vehicles_by_housingunit;
+    housing -- tenure;
+    housing -- building_characteristics;
+    health_wellness -- insurance;
+    health_wellness -- disability;
+
+
+/*second degree nodes*/
+
+     -- location_affordability
+    employment -- blue_collar
+    employment -- county_business_patterns
+    employment -- jobs 
+    employment -- labor_force 
+    employment -- hours_worked 
+    households -- families
+    households -- nonfamilies
+
+
+
+/* datasets */
+
+
+     -- 311-requests
+     -- acs14_disability_age
+     -- acs14_insured_age
+     -- acs14_occupied_house_units
+     -- acs14_pop_over_18
+     -- acs2014_should_delete_this
+     -- acs-age-dependency-ratio
+     -- acs-child-dependency-ratio
+     -- acs-commute-time-left-home
+     -- acs-foreign-born-vs-native-born
+     -- acs-hispanic-by-specific-origin
+    hours_worked -- acs-mean-hours-worked
+    hours_worked -- acs-mean-hours-worked-sex
+     -- acs-median-age-place-of-birth
+     -- acs-old-age-dependency-ratio
+    poverty -- acs-poverty-by-3-age-groups
+    poverty -- acs-poverty-by-age
+    poverty -- acs-poverty-by-sex
+    employment -- acs-total-employed
+    families -- acs-total-family-households
+    nonfamilies -- acs-total-nonfamily-households
+     -- acs-universe-civilian-noninstitution-pop
+     -- acs-universe-civilian-noninstitution-pop-18
+     -- acs-universe-civilian-noninstitution-pop-18-to-64
+     -- acs-universe-civilian-noninstitution-pop-65
+     -- acs-universe-civilian-noninstitution-pop-over-5
+     -- acs-universe-civilian-pop-over-18
+     -- acs-universe-female-16-to-50
+     -- acs-universe-native-born-pop
+     -- acs-universe-over-16-through-64
+     -- acs-universe-over-16-with-earnings
+    households -- acs-universe-over-18-in-household
+     -- acs-universe-over-25-with-bachelors
+     -- acs-universe-over-3
+     -- acs-universe-over-5
+    labor_force -- acs-universe-pop-16-to-64-worked-past-12-months
+     -- acs-universe-pop-over-1
+     -- acs-universe-pop-over-15
+     -- acs-universe-pop-over-16
+     -- acs-universe-race-non-hispanic
+     -- acs-universe-rent-occupied-housingunit-cash-rent
+    employment -- acs-universe-total-civilian-employed
+     -- acs-universe-two-races
+    labor_force -- acs-universe-workers-16-over-not-work-at-home
+     -- acs-work-residence-loc-state-county
+     -- age-by-sex-females
+     -- age-by-sex-males
+     -- age-totals
+     -- appraisal-values
+     -- average-family-size
+     -- average-owner-household-size
+     -- average-renter-household-size
+     -- avg-appraisal-value
+    education_attainment -- bachelor-degrees-received
+    blue_collar -- blue-collar-occupation-employment-female-16-over
+    blue_collar -- blue-collar-occupation-employment-male-16-over
+    blue_collar -- Blue-collar-occupation-employment_over_16
+     -- broadband-average-download-speed
+     -- broadband-average-upload-speed
+     -- broadband-max-advertised-download-speed
+     -- broadband-max-advertised-upload-speed
+     -- broadband-max-download-speed
+     -- broadband-max-upload
+     -- broadband-techtype
+     -- broadband-typical-download-speed
+     -- broadband-typical-upload-speed
+     -- building-age-of_housing_units
+     -- building-age-of-housing-units-lead-paint
+     -- building-age-of-housing-units-median
+     -- building-age-of-housing-units-national-register
+    county_business_patterns -- cbp-count-of-establishments-2014
+    county_business_patterns -- cbp-count-of-establishments-2015
+    county_business_patterns -- cbp-total-employed-2014
+    county_business_patterns -- cbp-total-employed-2015
+    county_business_patterns -- cbp-total-payroll-2014
+    county_business_patterns -- cbp-total-payroll-2015
+     -- cdc-500-cities-blood-pressure
+     -- cdc-500-cities-diabetes
+     -- cdc-500-cities-doctor-checkups
+     -- cdc-500-cities-heart-disease
+     -- cdc-500-cities-low-sleep
+     -- cdc-500-cities-mental-health
+     -- cdc-500-cities-no-physical-activity
+     -- cdc-500-cities-obesity
+     -- cdc-500-cities-physical-health
+     -- cdc-500-cities-smoking
+     -- cdc-drug-overdose-deaths
+     -- cinn-2017-core-blight-score
+     -- cinn-2017-property-char-index
+     -- cinn-2017-prosperity-score
+     -- cinn-2017-qual-of-life-index
+     -- cinn-2017-real-estate-score
+     -- cinn-oh-parcel-avg-market-val
+     -- cinn-oh-parcel-avg-market-val-by-class
+     -- cinn-oh-parcel-avg-tax-paid
+     -- cinn-oh-parcel-avg-tax-paid-by-class
+     -- cinn-oh-parcel-count-by-class
+     -- cinn-oh-parcel-count-foreclose
+     -- cinn-oh-parcel-count-foreclose-by-class
+     -- cinn-oh-parcel-count-tax-delinquent
+     -- cinn-oh-parcel-count-tax-delinquent-by-class
+     -- cinn-oh-parcel-percent-foreclose
+     -- cinn-oh-parcel-percent-foreclose-by-class
+     -- cinn-oh-parcel-percent-tax-delinquent
+     -- cinn-oh-parcel-percent-tax-delinquent-by-class
+     -- cinn-oh-parcel-total-market-val
+     -- cinn-oh-parcel-total-market-val-by-class
+     -- cinn-oh-parcel-total-tax-paid
+     -- cinn-oh-parcel-total-tax-paid-by-class
+     -- citizen-survey-2014-avg-basic-questions
+     -- citizen-survey-2014-avg-code-enforcement
+     -- citizen-survey-2014-avg-communication
+     -- citizen-survey-2014-avg-parks-rec
+     -- citizen-survey-2015-avg-basic-questions
+     -- citizen-survey-2015-avg-code-enforcement
+     -- citizen-survey-2015-avg-communication
+     -- citizen-survey-2015-avg-infrastructure
+     -- citizen-survey-2015-avg-parks-rec
+     -- citizen-survey-2016-avail-info-city-programs
+     -- citizen-survey-2016-avg-basic-questions
+     -- citizen-survey-2016-avg-code-enforcement
+     -- citizen-survey-2016-avg-communication
+     -- citizen-survey-2016-avg-infrastructure
+     -- citizen-survey-2016-avg-parks-rec
+     -- citizen-survey-2016-bike-infrastructure
+     -- citizen-survey-2016-business-exterior-maintain
+     -- citizen-survey-2016-city-image
+     -- citizen-survey-2016-city-life
+     -- citizen-survey-2016-city-magazine
+     -- citizen-survey-2016-city-website
+     -- citizen-survey-2016-clean-up-debris-prviate-prop
+     -- citizen-survey-2016-communicate-from-parks
+     -- citizen-survey-2016-customer-service-city
+     -- citizen-survey-2016-effective-comm-public
+     -- citizen-survey-2016-enforce-sign-regulations
+     -- citizen-survey-2016-feel-safe-in-city
+     -- citizen-survey-2016-level-public-involved-in-decisions
+     -- citizen-survey-2016-maintain-parks
+     -- citizen-survey-2016-maintain-sidewalk-neighborhd
+     -- citizen-survey-2016-maintain-streets-your-neighborhd
+     -- citizen-survey-2016-place-raise-kids
+     -- citizen-survey-2016-place-to-live
+     -- citizen-survey-2016-place-work
+     -- citizen-survey-2016-private-prop-mow-cut-weeds
+     -- citizen-survey-2016-qual-311-service
+     -- citizen-survey-2016-qual-city-servies
+     -- citizen-survey-2016-qual-parks-rec
+     -- citizen-survey-2016-qual-public-transit
+     -- citizen-survey-2016-resident-exterior-maintain
+     -- citizen-survey-2016-social-media
+     -- citizen-survey-2016-value-tax-dollars
+     -- citizen-survey-2016-video-programs
+     -- citizen-survey-2017-avail-info-city-programs
+     -- citizen-survey-2017-avg-basic-questions
+     -- citizen-survey-2017-avg-code-enforcement
+     -- citizen-survey-2017-avg-communication
+     -- citizen-survey-2017-avg-infrastructure
+     -- citizen-survey-2017-avg-parks-rec
+     -- citizen-survey-2017-bike-infrastructure
+     -- citizen-survey-2017-business-exterior-maintain
+     -- citizen-survey-2017-city-image
+     -- citizen-survey-2017-city-life
+     -- citizen-survey-2017-city-magazine
+     -- citizen-survey-2017-city-website
+     -- citizen-survey-2017-clean-up-debris-prviate-prop
+     -- citizen-survey-2017-communicate-from-parks
+     -- citizen-survey-2017-customer-service-city
+     -- citizen-survey-2017-effective-comm-public
+     -- citizen-survey-2017-enforce-sign-regulations
+     -- citizen-survey-2017-feel-safe-in-city
+     -- citizen-survey-2017-level-public-involved-in-decisions
+     -- citizen-survey-2017-maintain-parks
+     -- citizen-survey-2017-maintain-sidewalk-neighborhd
+     -- citizen-survey-2017-maintain-streets-your-neighborhd
+     -- citizen-survey-2017-place-raise-kids
+     -- citizen-survey-2017-place-to-live
+     -- citizen-survey-2017-place-work
+     -- citizen-survey-2017-private-prop-mow-cut-weeds
+     -- citizen-survey-2017-qual-311-service
+     -- citizen-survey-2017-qual-city-servies
+     -- citizen-survey-2017-qual-parks-rec
+     -- citizen-survey-2017-qual-public-transit
+     -- citizen-survey-2017-resident-exterior-maintain
+     -- citizen-survey-2017-social-media
+     -- citizen-survey-2017-value-tax-dollars
+     -- citizen-survey-2017-video-programs
+     -- citizen-survey-avg-timely-customer-service-dept-fire
+     -- citizen-survey-avg-timely-customer-service-dept-parks-rec
+     -- citizen-survey-avg-timely-customer-service-dept-police
+     -- citizen-survey-avg-timely-customer-service-dept-public-works
+     -- citizen-survey-ease-east-west-travel
+     -- citizen-survey-ease-north-south-travel
+     -- citizen-survey-ease-pedestrian-travel
+     -- citizen-survey-ease-travel-by-bicycle
+     -- citizen-survey-ease-travel-by-car
+     -- citizen-survey-quarter-timely-customer-service-dept-fire
+     -- citizen-survey-quarter-timely-customer-service-dept-parks-rec
+     -- citizen-survey-quarter-timely-customer-service-dept-police
+     -- citizen-survey-quarter-timely-customer-service-dept-public-works
+     -- citizen-survey-traffic-congestion
+     -- city_permits
+    employment -- civilian-employment-by-middle-skill
+    employment -- civilian-employment-by-occupation
+     -- civilian-population-by-veteran-status
+    labor_force -- civilian-vs-military-labor
+     -- cognitive-ambulatory-and-self_care-disabilities
+     -- college-educated-place-of-residence-over-past-year
+     -- commute-mean-travel-time
+     -- commute-type
+     -- crdc-201314-absent-disability
+     -- crdc-201314-absent-lep
+     -- crdc-201314-absent-race
+     -- crdc-201314-absent-sex
+     -- crdc-201314-absent-total
+    enrollment -- crdc-201314-enrollment-disability
+    enrollment -- crdc-201314-enrollment-lep
+    enrollment -- crdc-201314-enrollment-race
+    enrollment -- crdc-201314-enrollment-sex
+    enrollment -- crdc-201314-enrollment-total
+     -- crdc-201314-expense-non-personel
+     -- crdc-201314-expense-teachers-aids
+     -- crdc-201314-expense-teacher-salary
+     -- crdc-201314-expense-total-personel
+     -- crdc-201314-fte-counselors
+     -- crdc-201314-fte-teachers
+     -- crdc-201314-gifted-talent-disability
+     -- crdc-201314-gifted-talent-lep
+     -- crdc-201314-gifted-talent-race
+     -- crdc-201314-gifted-talent-sex
+     -- crdc-201314-gifted-talent-total
+     -- crdc-201314-law-officers
+     -- crdc-201314-sat-act-by-race
+     -- crdc-201314-sat-act-disability
+     -- crdc-201314-sat-act-lep
+     -- crdc-201314-sat-act-sex
+     -- crdc-201314-sat-act-total
+     -- crdc-201314-teachers-absent
+     -- crdc-201314-teachers-certification
+     -- crdc-201314-teachers-first-year
+     -- crdc-201314-teachers-second-year
+     -- crime-cinn-breakdown-2015
+     -- crime-cinn-total-crime-by-year
+     -- crime-cinn-total-sum-2010to2015
+     -- ctpp-daytime-pop
+     -- ctpp-od-chart
+    families -- dc2010_family_household
+    families -- dc2010_family_household_householder_age
+    families -- dc2010_family_household_other_occupants
+    families -- dc2010_family_household_size
+     -- dc2010_house_group_quarters
+    households -- dc2010_household_generations
+     -- dc2010_household_renter_occupied_size
+     -- dc2010_housingsize
+     -- dc2010_husband_wife_house
+    nonfamilies -- dc2010_nonfamily_householder_age
+    nonfamilies -- dc2010_nonfamily_household_other_occupants
+    nonfamilies -- dc2010_nonfamily_households
+    nonfamilies -- dc2010_nonfamily_household_size
+     -- dc2010_occupied_housingunits
+     -- dc2010_owner_occupied_household_by_size
+     -- dc2010_total_population
+     -- dc2010_vacant_houseunits_types
+     -- dc2010_vacant_housingunits
+     -- democrat-percentage
+     -- diff-amerian-indian-00-10
+     -- diff-asian-00-10
+     -- diff-black-00-10
+     -- diff-hawaiian-00-10
+     -- diff-hispanic-00-10
+     -- diff-other-00-10
+     -- disability-type-independent-living-difficulty
+    education_attainment -- educational-attainment
+    employment -- employment-diversity
+    employment -- employment-industry
+    employment -- employment-status
+    employment -- employment-to-pop-ratio
+    enrollment -- enrollment-status
+    enrollment -- enrollment_status_k_to_12
+    enrollment -- enrollment_status_k_to_8
+     -- epa-cancer-risk-environmental-justice-index
+     -- epa-diesel-pm25
+     -- epa-diesel-pm25-environmental-justice-index
+     -- epa-discharger-proximity
+     -- epa-discharger-proximity-environmental-justice-index
+     -- epa-lead-paint-environmental-justice-index
+     -- epa_nata_cancer_risk_air
+     -- epa_nata_respiratory_hi
+     -- epa-npl-justice-index
+     -- epa-npl-proximity
+     -- epa-ozone-environmental-justice-index
+     -- epa-pm25-environmental-justice-index
+     -- epa-respiratory-hazard-environmental-justice-index
+     -- epa-rmp-proximity
+     -- epa-rmp-proximity-environmental-justice-index
+     -- epa-traffic-proximity
+     -- epa-traffic-proximity-environmental-justice-index
+     -- epa-tsdf-proximity
+     -- epa-tsdf-proximity-environmental-justice-index
+     -- epa-walkability-employ-diverse-rank
+     -- epa-walkability-index
+     -- epa-walkability-intersection-dense-rank
+     -- epa-walkability-mixed-use-ranking
+     -- epa-walkability-prox-to-transit
+    poverty -- families-below-poverty-level
+     -- families-with-own-children
+     -- family-status
+     -- female-veteran-status
+     -- flint-lead-2min
+     -- flint-lead-45sec
+     -- flint-lead-firstdraw
+     -- foreign-born-edu-attainment
+     -- foreign-born-population
+     -- foreign-born-region-of-origin
+     -- gender
+     -- generations
+     -- gladstone-mo-apr-2017-nonviolent-crime
+     -- gladstone-mo-apr-2017-total-crime
+     -- gladstone-mo-apr-2017-total-nonviolent-crime
+     -- gladstone-mo-apr-2017-total-violent-crime
+     -- gladstone-mo-apr-2017-violent-crime
+     -- gladstone-mo-feb-2017-nonviolent-crime
+     -- gladstone-mo-feb-2017-total-crime
+     -- gladstone-mo-feb-2017-total-nonviolent-crime
+     -- gladstone-mo-feb-2017-total-violent-crime
+     -- gladstone-mo-feb-2017-violent-crime
+     -- gladstone-mo-jan-2017-nonviolent-crime
+     -- gladstone-mo-jan-2017-total-crime
+     -- gladstone-mo-jan-2017-total-nonviolent-crime
+     -- gladstone-mo-jan-2017-total-violent-crime
+     -- gladstone-mo-jan-2017-violent-crime
+     -- gladstone-mo-jun-2017-nonviolent-crime
+     -- gladstone-mo-jun-2017-total-crime
+     -- gladstone-mo-jun-2017-total-nonviolent-crime
+     -- gladstone-mo-jun-2017-total-violent-crime
+     -- gladstone-mo-jun-2017-violent-crime
+     -- gladstone-mo-mar-2017-nonviolent-crime
+     -- gladstone-mo-mar-2017-total-crime
+     -- gladstone-mo-mar-2017-total-nonviolent-crime
+     -- gladstone-mo-mar-2017-total-violent-crime
+     -- gladstone-mo-mar-2017-violent-crime
+     -- gladstone-mo-may-2017-nonviolent-crime
+     -- gladstone-mo-may-2017-total-crime
+     -- gladstone-mo-may-2017-total-nonviolent-crime
+     -- gladstone-mo-may-2017-total-violent-crime
+     -- gladstone-mo-may-2017-violent-crime
+     -- gross-hh-density
+     -- health-birth-rate
+     -- health-chronic-disease
+     -- health-fertility-rate
+     -- hearing-and-vision-disabilities
+     -- heating-fuel-for-housing-units
+     -- hh-00
+     -- hispanic_origin_by_race
+     -- hmda-2012
+     -- hmda-2013
+     -- hmda-2014
+     -- hmda-2015
+     -- homeowner-vacancy-rate
+     -- home-purchases-2012
+     -- home-purchases-2013
+     -- home-purchases-2014
+     -- home-value
+    households -- household-00-10
+    households -- household-00-10-chart
+    households -- householder-age-owner-occupied
+    households -- householder-age-renter-occupied
+    households -- household-family-size
+    income -- household-income
+    households -- households__total_households
+    income -- house-total-median_household_income
+     -- houseunit-total-vacant_housing_unit
+     -- housingunits-00-10
+     -- hrsa_pcsa_dentists
+     -- hrsa_pcsa_doctor_obgyn
+     -- hrsa_pcsa_doctors_obgyn_age
+     -- hrsa_pcsa_doctor_special
+     -- hrsa_pcsa_doctors_special_age
+     -- hrsa_pcsa_doctors_special_sex
+     -- hrsa_pcsa_nurse
+     -- hrsa_pcsa_obgyn_sex
+     -- hrsa_pcsa_primary_doctor
+     -- hrsa_pcsa_primary_doctor_age
+     -- hrsa_pcsa_primary_doctor_sex
+     -- hu-00
+     -- hu-00-10-chart
+    jobs -- hud-jobs-proximity-index
+     -- hud-low-transport-cost-index
+    income -- income-inequality-gini-index
+    poverty -- income-to-poverty-ratio
+     -- incomplete-kitchen
+     -- incomplete-plumbing
+     -- index-dissimilarity-index-black-white
+     -- insured-and-uninsured
+     -- Insured Population by Age
+    jobs -- jobs-2002-2013
+    jobs -- jobs-2003-by-industry
+    jobs -- jobs-2014-by-industry
+    jobs -- jobs-by-industry-2013
+     -- kcmo-land-value-average-assessed-improvement-value
+     -- kcmo-permits-10-14
+     -- kcmo-permits-5_9
+     -- kcmo-permits-by-year-05_14
+     -- kcmo-permits-nonresidential-by-year-05_14
+     -- kcmo-permits-residential-by-year-05_14
+     -- kcmo-permits-value-10_14
+     -- kcmo-permits-value-5_9
+    labor_force -- labor-engagement-index
+    location_affordability -- lai-employment-access-index
+    location_affordability -- lai-low-income
+    location_affordability -- lai-low-income-housing-afford
+    location_affordability -- lai-low-income-trans-afford
+    location_affordability -- lai-median-income-families
+    location_affordability -- lai-retail-access-index
+     -- language-isolation
+     -- living-arrange-adults-18-years-over
+    jobs -- local-job-density
+     -- locally-reported-nonviolent-crimes-total
+     -- locally-reported-total-crimes
+     -- locally-reported-violent-crimes-total
+     -- local-reported-non-violent-crime
+     -- local-reported-violent-crimes
+    jobs -- local-retail-job-density
+    jobs -- lodes-total-jobs-percent-change
+     -- male-veteran-status
+     -- marital-status
+     -- married-presence-children
+     -- median-age
+    labor_force -- median-age-of-workers-female
+    labor_force -- median-age-of-workers-male
+    labor_force -- median-age-of-workers-total
+     -- median-commute-distance
+    income -- median-earnings-female
+    income -- median-earnings-male
+    income -- median-earnings-total
+     -- median-home-rent
+     -- median-home-value
+    income -- median-income-25-44
+    income -- median-income-45-64
+    income -- median-income-65-and-over
+    income -- median_income__born_in_other_state
+    income -- median_income__born_in_state_of_residence
+    income -- median_income__foreign_born
+    income -- median_income__native_born_outside_of_us
+    income -- median-income-under-25
+     -- median-rent-by-numer-of-bedrooms
+     -- medicare
+     -- mindmixer-participants
+     -- monthly-home-rent
+     -- mortgage-status-of-owner-occupied-housing-units
+     -- motor-vehicle-dead-cycle-ped-2015
+     -- motor-vehicle-deaths-total-2015
+     -- motor-vehicle-involve-issues-3d
+     -- non_hispanic_origin_by_race
+     -- no-party-percentage
+    jobs -- number-jobs-within-30-min-transit
+     -- number-of-broadband-providers
+     -- number-of-vehicles-per-housing-unit
+     -- other-party-affiliation
+     -- overcrowded-housing-units
+     -- owner-occ-00
+     -- owner-occ-00-10-chart
+     -- owner-occ-10
+     -- owner-occupied-change-00-10
+     -- owner-vs-renter-occupied
+    labor_force -- participation-in-labor-force
+     -- party-affiliation-breakdown
+     -- patents-by-category-2010-2016
+     -- patents-total-2010-2016
+    income -- per-capita-income
+    enrollment -- percent-change-of-enrollment-of-grades-1-to-4
+    enrollment -- percent-change-of-enrollment-of-grades-5-to-8
+    enrollment -- percent-change-of-enrollment-of-grades-9-to-12
+    enrollment -- percent-change-of-enrollment-of-kindergarteners
+    enrollment -- percent-change-of-enrollment-of-preschoolers
+    location_affordability -- percent-income-spent-housing
+    location_affordability -- percent-income-spent-transportation
+     -- period-of-naturalization
+     -- place-of-birth-with-citizenship-status
+     -- place-of-residence-over-past-year
+     -- police-community-events-sum
+     -- police-community-events-yearly
+     -- police-shooting-incidents-sum
+     -- police-shooting-incidents-yearly
+     -- pop-00
+     -- pop-00-10
+     -- pop-00-10-chart
+     -- pop-living-with-disability
+     -- pop-total-college_graduation_rate
+    enrollment -- pop-total-enrolled_in_school
+     -- pop-total-high_school_graduation_rate
+     -- pop-under-18-age-breakdowns
+     -- pop_with_2_races
+    poverty -- poverty_and_low_income_persons
+     -- presence-of-children-single-female
+     -- primary-language-other-than-english
+     -- primary-language-spoken-at-home
+    enrollment -- private-school-enrollment-by-grade
+    enrollment -- public-school-enrollment-by-grade
+     -- race-american-indian-00-10-chart
+     -- race-asian-00-10-chart
+     -- race-black-00-10-chart
+     -- race-hawaiian-00-10-chart
+     -- race-hispanic-00-10-chart
+     -- race-other-00-10-chart
+     -- race-totals
+     -- race-white-00-10-chart
+     -- regional-diversity
+     -- rental-vacancy-rate
+     -- renter-occ-00
+     -- renter-occ-00-10
+     -- renter-occ-00-10-chart
+     -- renter-occ-10
+     -- republican-percentage
+     -- sba-12-13-14-15
+     -- school-proficiency-index
+    income -- selected-monthly-income-as-a-percentage-of-income
+    income -- self_employment_income
+    employment -- service-occupation-employment-16-over
+     -- single-male-presence-of-children
+     -- sovi-0610-avg-index
+     -- sovi-0610-index-3-class
+     -- temporal__age__10_to_14
+     -- temporal__age__15_to_19
+     -- temporal__age__20_to_24
+     -- temporal__age__25_to_34
+     -- temporal__age__35_to_44
+     -- temporal__age__45_to_54
+     -- temporal__age__55_to_59
+     -- temporal__age__5_to_9
+     -- temporal__age__60_to_64
+     -- temporal__age__65_to_74
+     -- temporal__age__75_to_84
+     -- temporal__age__over_85
+     -- temporal__age__under_18
+     -- temporal__age__under_5
+     -- temporal__average_household_size
+     -- temporal__average__per_capita_income
+     -- temporal__average_travel_time_to_work
+     -- temporal__commute_schedule__10_00_am_to_11_59_am
+     -- temporal__commute_schedule__12_00_am_to_5_29_am
+     -- temporal__commute_schedule__12_00_pm_to_11_59_pm
+     -- temporal__commute_schedule__5_30_am_to_6_29_am
+     -- temporal__commute_schedule__6_30_am_to_7_29_am
+     -- temporal__commute_schedule__7_30_am_to_8_29_am
+     -- temporal__commute_schedule__8_30_am_to_9_59_am
+     -- temporal__education__bachelors_degree
+     -- temporal__education__graduate_degree
+     -- temporal__education__high_school
+     -- temporal__education__no_high_school_diploma
+     -- temporal__education__some_college
+     -- temporal-employment-employed
+     -- temporal__employment__not_in_labor_force
+     -- temporal__employment__unemployed
+     -- temporal__enrollment__k_12
+     -- temporal__enrollment__not_enrolled_in_school
+     -- temporal__enrollment__postsecondary_school
+     -- temporal__enrollment__preschool
+     -- temporal__enrollment__private_school
+     -- temporal__enrollment__public_school
+     -- temporal__families_below_poverty_level
+     -- temporal-family-households-with-kids
+     -- temporal-family-status-female-no-husband
+     -- temporal-family-status-male-no-wife
+     -- temporal-family-status-married
+     -- temporal__households_below_poverty_level
+     -- temporal-household-size-family-2
+     -- temporal-household-size-family-3
+     -- temporal-household-size-family-4
+     -- temporal-household-size-family-5
+     -- temporal-household-size-family-6
+     -- temporal-household-size-family-7-plus
+     -- temporal-household-size-non-family-1
+     -- temporal-household-size-non-family-2
+     -- temporal-household-size-non-family-3
+     -- temporal-household-size-non-family-4
+     -- temporal-household-size-non-family-5
+     -- temporal-household-size-non-family-6
+     -- temporal-household-size-non-family-7-plus
+     -- temporal__housing_status__occupied_housing_units
+     -- temporal__housing_status__vacant_housing_units
+     -- temporal-income-poverty-100-124
+     -- temporal-income-poverty-125-149
+     -- temporal-income-poverty-150-184
+     -- temporal-income-poverty-185-199
+     -- temporal-income-poverty-50-99
+     -- temporal-income-poverty-below-50
+     -- temporal-income-poverty-over-200
+     -- temporal-marital-status-divorced
+     -- temporal-marital-status-married
+     -- temporal-marital-status-never-married
+     -- temporal-marital-status-widowed
+     -- temporal__owner_occupied
+     -- temporal__persons_below_poverty_level
+     -- temporal-pop-over-18
+     -- temporal__population
+     -- temporal__race__american_indian
+     -- temporal__race__asian
+     -- temporal__race__black
+     -- temporal__race__hispanic
+     -- temporal__race__single_race_other
+     -- temporal__race__white
+     -- temporal__rent_as_a_percentage_of_household_income
+     -- temporal__renter_occupied
+     -- temporal__sex__female
+     -- temporal__sex__male
+     -- temporal-total-commuters
+     -- temporal-total-families
+     -- temporal__total__hh
+     -- temporal__total__hu
+     -- temporal__total__median_home_value
+     -- temporal__total__median_income
+     -- temporal-total-pop-over-15
+     -- temporal-total-pop-over-16
+     -- temporal-total-pop-over-25
+     -- temporal-total-pop-over-3
+     -- temporal-total-pop-poverty-status-determined
+     -- temporal-units-in-structure-10-19
+     -- temporal-units-in-structure-1-attached
+     -- temporal-units-in-structure-1-detached
+     -- temporal-units-in-structure-2
+     -- temporal-units-in-structure-20-49
+     -- temporal-units-in-structure-3-4
+     -- temporal-units-in-structure-50-plus
+     -- temporal-units-in-structure-5-9
+     -- temporal-units-in-structure-mobile-homes
+     -- temporal-vehicles-1
+     -- temporal-vehicles-2
+     -- temporal-vehicles-3-plus
+     -- temporal-vehicles-none
+     -- total-311-requests
+     -- total-appraisal-value
+     -- total-area
+    poverty -- total-below-poverty-level
+     -- total_city_permits
+     -- total-families
+     -- total-fires-2015
+    households -- total-households-2010
+     -- total-house-units-2010
+     -- total-minority-population
+    employment -- total-number-unemployed
+     -- total-occupied-housing-units
+     -- total-owner-occupied-housing-units
+     -- total-pop-25-over
+     -- total-pop-over-18
+     -- total-pop-over-25-no-high-school-credentials
+     -- total-population
+     -- total-population-commuting-to-work
+     -- total-population-over-65
+     -- total-population-under-age-18
+    poverty -- total-pop-with-poverty-status-determined
+     -- total-receiving-food-stamps
+     -- total-registered-voters
+    labor_force -- total-working-pop-over-16
+     -- travel-time-to-work
+     -- ucr-crime-breakdowns
+     -- ucr-total-crime
+    employment -- unemployment-to-pop-ratio
+     -- units-in-structure
+     -- unknown-party-percentage
+    location_affordability -- updated-gross-rent-as-a-percentage-of-income
+     -- usda_low_access_food_2010
+     -- usda_low_access_food_children
+     -- usda_low_access_food_seniors
+     -- usda_low_access_food_urban_rural
+     -- vacancy_status
+     -- vehicle-incidents
+    poverty -- very-low-income-families-150-poverty-level
+     -- wage-of-workers
+     -- white-diff-00-10
+    labor_force -- women_in_labor_force_with_birth_in_past_year
+    labor_force -- women-labor-force-with-birth-past-year
+    poverty -- worked-full-time-past-year-under-poverty-level
+     -- year-householder-moved-into-unit

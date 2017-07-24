@@ -5,12 +5,14 @@ import os
 from path import Path
 import textwrap
 import collections
+import pygraphviz as pgv
 
 from configobj import ConfigObj
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from sqlalchemy import create_engine
 
 
+"""SET UP CONNECTION TO FLOPPY"""
 CURRENT_DIR = Path(__file__).parent
 
 def get_db_connection_string():
@@ -22,8 +24,21 @@ def get_db_connection_string():
     )
 
 
+"""DEFINE ARGUMENTS"""
+
+def get_args():
+    parser = argparse.ArgumentParser(description='Create vizgraph', formatter_class=argparse.RawTextHelpFormatter)
+    parser.add_argument(
+        'dot_file_name',
+        help="Specify name of dot graph"
+    )
+    args = parser.parse_args()
+    return args
+
+"""RUN FUNCTION"""
 
 def run():
+    args = get_args()
     def get_system_names(engine):
         """ get system names for all published characteristic types
         """
@@ -39,45 +54,42 @@ def run():
             return [column for column in result.fetchall()]
     engine = create_engine(get_db_connection_string())
     system_names = get_system_names(engine)
-    #print(system_names)
-
 
     datasets = []
     for pair in system_names:
         datasets.append(pair[1])
 
-    #print(datasets)
     d = collections.defaultdict(dict)
 
-    for pair in system_names:
-        
+    for dataset in datasets: 
+        d['{}'.format(dataset)] = [] 
+        for pair in system_names:
+            if pair[1] == dataset:
+                d['{}'.format(dataset)].append(pair[0])
+    print(d['temporal__age__25_to_34'])
 
+    """PRINT DICTIONARY TO TXT FILE"""
 
-#        n = name.split("__")
-#        i = 0
-#        d['{}'.format(n[i]) = {}
-#        for i in range(len(n)): 
-#            d['{}'.format()] 
-#
+    f =  open('dataset_groupings.txt', 'w')
+    for key, value in d.items():
+        f.write('%s:%s\n' % (key, value))
+    f.close()
 
+    """CREATE FUNCTION FOR BUILDING GRAPH/DIAGRAM WITH DOT"""
 
-
-
-
-
-
-
-
-#for row in file_map:
-#    # derive row key from something 
-#    # when using defaultdict, we can skip the next step creating a dictionary on row_key
-#    d[row_key] = {} 
-#    for idx, col in enumerate(row):
-#        d[row_key][idx] = col
-#
+    def make_digraph():
+        g = pgv.AGraph()
+        g.add_node('insert_patch_here')
+        for key in d.keys():
+            if len(d['{}'.format(key)]) == 1:
+                g.add_node(key)
+            else:
+                g.add_node(key) 
+                for i in d['{}'.format(key)]:
+                    g.add_edge(key,i)
+            g.write('{}'.format(args.dot_file_name))
+    make_digraph()
 
 
 if __name__ == '__main__':
     run()
-
-
