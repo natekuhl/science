@@ -1,6 +1,7 @@
 /*
 
 economy
+elections
 education
 health_wellness
 housing
@@ -16,34 +17,51 @@ citizen_survey
 */
 
 
-/*first degree nodes*/
+/*second degree nodes*/
 
 ✓    economy -- poverty
 ✓    economy -- income 
 ✓    economy -- employment
-✓    eduction -- enrollment;
-✓    eduction -- education_attainment;
-    population_demographics -- age;
-    population_demographics -- households;
-    population_demographics -- race;
-    population_demographics -- immigration;
-    population_demographics -- place_of_birth;
-    population_demographics -- veteran_background;
-    population_demographics -- sex;
-    population_demographics -- marital_status;
-    population_demographics -- mobility;
-    population_demographics -- civilian_pop;
-    transportation -- commuting;
-    transportation -- vehicles_by_housingunit;
-    housing -- tenure;
-    housing -- building_characteristics;
-    health_wellness -- insurance;
-    health_wellness -- disability;
+✓    economy -- credit 
+✓    education -- enrollment;
+✓    education -- education_attainment;
+✓    education -- schools;
+✓    population_demographics -- age;
+✓    population_demographics -- households;
+✓    population_demographics -- race;
+✓    population_demographics -- marriage;
+✓    population_demographics -- civilian_pop;
+✓    population_demographics -- sex;
+✓    population_demographics -- migration;
+✓    population_demographics -- language;
+✓    transportation -- commuting;
+✓    transportation -- vehicle_ownership;
+✓    transportation -- traffic_accidents;
+✓    housing -- tenure;
+✓    housing -- building_characteristics;
+✓    housing -- valuation;
+✓    housing -- cost_of_living;
+✓    housing -- vacancy;
+✓    health_wellness -- insurance;
+✓    health_wellness -- disability;
+✓    health_wellness -- nutrition;
+✓    health_wellness -- providers;
+✓    health_wellness -- health_wellness_indicators;
+     public_safety -- ucr
+     public_safety -- locally_reported_crime 
+     elections -- party_affiliation
+     technology -- patents
+     technology -- internet 
+     environment -- walkability
+     environment -- environmental_justice 
+     environment -- proximity_hazardous_pollutants
+     environment -- air_quality 
+     environment -- water 
 
 
-/*second degree nodes*/
+/*third degree nodes*/
 
-     -- location_affordability
+    income -- location_affordability 
     employment -- blue_collar
     employment -- county_business_patterns
     employment -- jobs 
@@ -51,7 +69,16 @@ citizen_survey
     employment -- hours_worked 
     households -- families
     households -- nonfamilies
-
+    migration -- foreign
+    migration -- domestic 
+    commuting -- commuting_patterns
+    education_attainment -- graduation_rates
+    schools -- personnel
+    schools -- gifted_students 
+    schools -- expenses 
+    schools -- standardized_tests 
+    schools -- absences
+    credit -- mortgage
 
 
 /* datasets */
@@ -65,12 +92,12 @@ citizen_survey
      -- acs2014_should_delete_this
      -- acs-age-dependency-ratio
      -- acs-child-dependency-ratio
-     -- acs-commute-time-left-home
-     -- acs-foreign-born-vs-native-born
+    commuting -- acs-commute-time-left-home
+    foreign -- acs-foreign-born-vs-native-born
      -- acs-hispanic-by-specific-origin
     hours_worked -- acs-mean-hours-worked
     hours_worked -- acs-mean-hours-worked-sex
-     -- acs-median-age-place-of-birth
+    migration -- acs-median-age-place-of-birth
      -- acs-old-age-dependency-ratio
     poverty -- acs-poverty-by-3-age-groups
     poverty -- acs-poverty-by-age
@@ -78,12 +105,12 @@ citizen_survey
     employment -- acs-total-employed
     families -- acs-total-family-households
     nonfamilies -- acs-total-nonfamily-households
-     -- acs-universe-civilian-noninstitution-pop
-     -- acs-universe-civilian-noninstitution-pop-18
-     -- acs-universe-civilian-noninstitution-pop-18-to-64
-     -- acs-universe-civilian-noninstitution-pop-65
-     -- acs-universe-civilian-noninstitution-pop-over-5
-     -- acs-universe-civilian-pop-over-18
+    civilian_pop -- acs-universe-civilian-noninstitution-pop
+    civilian_pop -- acs-universe-civilian-noninstitution-pop-18
+    civilian_pop -- acs-universe-civilian-noninstitution-pop-18-to-64
+    civilian_pop -- acs-universe-civilian-noninstitution-pop-65
+    civilian_pop -- acs-universe-civilian-noninstitution-pop-over-5
+    civilian_pop -- acs-universe-civilian-pop-over-18
      -- acs-universe-female-16-to-50
      -- acs-universe-native-born-pop
      -- acs-universe-over-16-through-64
@@ -96,54 +123,54 @@ citizen_survey
      -- acs-universe-pop-over-1
      -- acs-universe-pop-over-15
      -- acs-universe-pop-over-16
-     -- acs-universe-race-non-hispanic
-     -- acs-universe-rent-occupied-housingunit-cash-rent
+    race -- acs-universe-race-non-hispanic
+    tenure -- acs-universe-rent-occupied-housingunit-cash-rent
     employment -- acs-universe-total-civilian-employed
-     -- acs-universe-two-races
+    race -- acs-universe-two-races
     labor_force -- acs-universe-workers-16-over-not-work-at-home
-     -- acs-work-residence-loc-state-county
-     -- age-by-sex-females
-     -- age-by-sex-males
-     -- age-totals
+    commuting -- acs-work-residence-loc-state-county
+    age -- age-by-sex-females
+    age -- age-by-sex-males
+    age -- age-totals
      -- appraisal-values
      -- average-family-size
-     -- average-owner-household-size
-     -- average-renter-household-size
+    tenure -- average-owner-household-size
+    tenure -- average-renter-household-size
      -- avg-appraisal-value
     education_attainment -- bachelor-degrees-received
     blue_collar -- blue-collar-occupation-employment-female-16-over
     blue_collar -- blue-collar-occupation-employment-male-16-over
     blue_collar -- Blue-collar-occupation-employment_over_16
-     -- broadband-average-download-speed
-     -- broadband-average-upload-speed
-     -- broadband-max-advertised-download-speed
-     -- broadband-max-advertised-upload-speed
-     -- broadband-max-download-speed
-     -- broadband-max-upload
-     -- broadband-techtype
-     -- broadband-typical-download-speed
-     -- broadband-typical-upload-speed
-     -- building-age-of_housing_units
-     -- building-age-of-housing-units-lead-paint
-     -- building-age-of-housing-units-median
-     -- building-age-of-housing-units-national-register
+    internet -- broadband-average-download-speed
+    internet -- broadband-average-upload-speed
+    internet -- broadband-max-advertised-download-speed
+    internet -- broadband-max-advertised-upload-speed
+    internet -- broadband-max-download-speed
+    internet -- broadband-max-upload
+    internet -- broadband-techtype
+    internet -- broadband-typical-download-speed
+    internet -- broadband-typical-upload-speed
+    building_characteristics -- building-age-of_housing_units
+    building_characteristics -- building-age-of-housing-units-lead-paint
+    building_characteristics -- building-age-of-housing-units-median
+    building_characteristics -- building-age-of-housing-units-national-register
     county_business_patterns -- cbp-count-of-establishments-2014
     county_business_patterns -- cbp-count-of-establishments-2015
     county_business_patterns -- cbp-total-employed-2014
     county_business_patterns -- cbp-total-employed-2015
     county_business_patterns -- cbp-total-payroll-2014
     county_business_patterns -- cbp-total-payroll-2015
-     -- cdc-500-cities-blood-pressure
-     -- cdc-500-cities-diabetes
-     -- cdc-500-cities-doctor-checkups
-     -- cdc-500-cities-heart-disease
-     -- cdc-500-cities-low-sleep
-     -- cdc-500-cities-mental-health
-     -- cdc-500-cities-no-physical-activity
-     -- cdc-500-cities-obesity
-     -- cdc-500-cities-physical-health
-     -- cdc-500-cities-smoking
-     -- cdc-drug-overdose-deaths
+    health_wellness_indicators -- cdc-500-cities-blood-pressure
+    health_wellness_indicators -- cdc-500-cities-diabetes
+    health_wellness_indicators -- cdc-500-cities-doctor-checkups
+    health_wellness_indicators -- cdc-500-cities-heart-disease
+    health_wellness_indicators -- cdc-500-cities-low-sleep
+    health_wellness_indicators -- cdc-500-cities-mental-health
+    health_wellness_indicators -- cdc-500-cities-no-physical-activity
+    health_wellness_indicators -- cdc-500-cities-obesity
+    health_wellness_indicators -- cdc-500-cities-physical-health
+    health_wellness_indicators -- cdc-500-cities-smoking
+    health_wellness_indicators -- cdc-drug-overdose-deaths
      -- cinn-2017-core-blight-score
      -- cinn-2017-property-char-index
      -- cinn-2017-prosperity-score
@@ -260,55 +287,55 @@ citizen_survey
      -- city_permits
     employment -- civilian-employment-by-middle-skill
     employment -- civilian-employment-by-occupation
-     -- civilian-population-by-veteran-status
+    civilian_pop -- civilian-population-by-veteran-status
     labor_force -- civilian-vs-military-labor
-     -- cognitive-ambulatory-and-self_care-disabilities
-     -- college-educated-place-of-residence-over-past-year
-     -- commute-mean-travel-time
-     -- commute-type
-     -- crdc-201314-absent-disability
-     -- crdc-201314-absent-lep
-     -- crdc-201314-absent-race
-     -- crdc-201314-absent-sex
-     -- crdc-201314-absent-total
+    disability -- cognitive-ambulatory-and-self_care-disabilities
+    domestic -- college-educated-place-of-residence-over-past-year
+    commuting -- commute-mean-travel-time
+    commuting -- commute-type
+    absences -- crdc-201314-absent-disability
+    absences -- crdc-201314-absent-lep
+    absences -- crdc-201314-absent-race
+    absences -- crdc-201314-absent-sex
+    absences -- crdc-201314-absent-total
     enrollment -- crdc-201314-enrollment-disability
     enrollment -- crdc-201314-enrollment-lep
     enrollment -- crdc-201314-enrollment-race
     enrollment -- crdc-201314-enrollment-sex
     enrollment -- crdc-201314-enrollment-total
-     -- crdc-201314-expense-non-personel
-     -- crdc-201314-expense-teachers-aids
-     -- crdc-201314-expense-teacher-salary
-     -- crdc-201314-expense-total-personel
-     -- crdc-201314-fte-counselors
-     -- crdc-201314-fte-teachers
-     -- crdc-201314-gifted-talent-disability
-     -- crdc-201314-gifted-talent-lep
-     -- crdc-201314-gifted-talent-race
-     -- crdc-201314-gifted-talent-sex
-     -- crdc-201314-gifted-talent-total
-     -- crdc-201314-law-officers
-     -- crdc-201314-sat-act-by-race
-     -- crdc-201314-sat-act-disability
-     -- crdc-201314-sat-act-lep
-     -- crdc-201314-sat-act-sex
-     -- crdc-201314-sat-act-total
-     -- crdc-201314-teachers-absent
-     -- crdc-201314-teachers-certification
-     -- crdc-201314-teachers-first-year
-     -- crdc-201314-teachers-second-year
-     -- crime-cinn-breakdown-2015
-     -- crime-cinn-total-crime-by-year
-     -- crime-cinn-total-sum-2010to2015
-     -- ctpp-daytime-pop
-     -- ctpp-od-chart
+    expenses -- crdc-201314-expense-non-personel
+    expenses -- crdc-201314-expense-teachers-aids
+    expenses -- crdc-201314-expense-teacher-salary
+    expenses -- crdc-201314-expense-total-personel
+    personnel -- crdc-201314-fte-counselors
+    personnel -- crdc-201314-fte-teachers
+    gifted_students -- crdc-201314-gifted-talent-disability
+    gifted_students -- crdc-201314-gifted-talent-lep
+    gifted_students -- crdc-201314-gifted-talent-race
+    gifted_students -- crdc-201314-gifted-talent-sex
+    gifted_students -- crdc-201314-gifted-talent-total
+    personnel -- crdc-201314-law-officers
+    standardized_tests -- crdc-201314-sat-act-by-race
+    standardized_tests -- crdc-201314-sat-act-disability
+    standardized_tests -- crdc-201314-sat-act-lep
+    standardized_tests -- crdc-201314-sat-act-sex
+    standardized_tests -- crdc-201314-sat-act-total
+    absences -- crdc-201314-teachers-absent
+    personnel -- crdc-201314-teachers-certification
+    personnel -- crdc-201314-teachers-first-year
+    personnel -- crdc-201314-teachers-second-year
+    locally_reported_crime -- crime-cinn-breakdown-2015
+    locally_reported_crime -- crime-cinn-total-crime-by-year
+    locally_reported_crime -- crime-cinn-total-sum-2010to2015
+    commuting_patterns -- ctpp-daytime-pop
+    commuting_patterns -- ctpp-od-chart
     families -- dc2010_family_household
     families -- dc2010_family_household_householder_age
     families -- dc2010_family_household_other_occupants
     families -- dc2010_family_household_size
      -- dc2010_house_group_quarters
     households -- dc2010_household_generations
-     -- dc2010_household_renter_occupied_size
+    tenure -- dc2010_household_renter_occupied_size
      -- dc2010_housingsize
      -- dc2010_husband_wife_house
     nonfamilies -- dc2010_nonfamily_householder_age
@@ -316,18 +343,18 @@ citizen_survey
     nonfamilies -- dc2010_nonfamily_households
     nonfamilies -- dc2010_nonfamily_household_size
      -- dc2010_occupied_housingunits
-     -- dc2010_owner_occupied_household_by_size
+    tenure -- dc2010_owner_occupied_household_by_size
      -- dc2010_total_population
      -- dc2010_vacant_houseunits_types
      -- dc2010_vacant_housingunits
-     -- democrat-percentage
+    party_affiliation -- democrat-percentage
      -- diff-amerian-indian-00-10
      -- diff-asian-00-10
      -- diff-black-00-10
      -- diff-hawaiian-00-10
      -- diff-hispanic-00-10
      -- diff-other-00-10
-     -- disability-type-independent-living-difficulty
+    disability -- disability-type-independent-living-difficulty
     education_attainment -- educational-attainment
     employment -- employment-diversity
     employment -- employment-industry
@@ -336,42 +363,42 @@ citizen_survey
     enrollment -- enrollment-status
     enrollment -- enrollment_status_k_to_12
     enrollment -- enrollment_status_k_to_8
-     -- epa-cancer-risk-environmental-justice-index
-     -- epa-diesel-pm25
-     -- epa-diesel-pm25-environmental-justice-index
-     -- epa-discharger-proximity
-     -- epa-discharger-proximity-environmental-justice-index
-     -- epa-lead-paint-environmental-justice-index
-     -- epa_nata_cancer_risk_air
-     -- epa_nata_respiratory_hi
-     -- epa-npl-justice-index
-     -- epa-npl-proximity
-     -- epa-ozone-environmental-justice-index
-     -- epa-pm25-environmental-justice-index
-     -- epa-respiratory-hazard-environmental-justice-index
-     -- epa-rmp-proximity
-     -- epa-rmp-proximity-environmental-justice-index
-     -- epa-traffic-proximity
-     -- epa-traffic-proximity-environmental-justice-index
-     -- epa-tsdf-proximity
-     -- epa-tsdf-proximity-environmental-justice-index
-     -- epa-walkability-employ-diverse-rank
-     -- epa-walkability-index
-     -- epa-walkability-intersection-dense-rank
-     -- epa-walkability-mixed-use-ranking
-     -- epa-walkability-prox-to-transit
+    environmental_justice -- epa-cancer-risk-environmental-justice-index
+    air_quality -- epa-diesel-pm25
+    environmental_justice -- epa-diesel-pm25-environmental-justice-index
+    proximity_hazardous_pollutants -- epa-discharger-proximity
+    environmental_justice -- epa-discharger-proximity-environmental-justice-index
+    environmental_justice -- epa-lead-paint-environmental-justice-index
+    air_quality -- epa_nata_cancer_risk_air
+    air_quality -- epa_nata_respiratory_hi
+    environmental_justice -- epa-npl-justice-index
+    proximity_hazardous_pollutants -- epa-npl-proximity
+    environmental_justice -- epa-ozone-environmental-justice-index
+    environmental_justice -- epa-pm25-environmental-justice-index
+    environmental_justice -- epa-respiratory-hazard-environmental-justice-index
+    proximity_hazardous_pollutants -- epa-rmp-proximity
+    environmental_justice -- epa-rmp-proximity-environmental-justice-index
+    transportation -- epa-traffic-proximity
+    environmental_justice -- epa-traffic-proximity-environmental-justice-index
+    proximity_hazardous_pollutants -- epa-tsdf-proximity
+    environmental_justice -- epa-tsdf-proximity-environmental-justice-index
+    walkability -- epa-walkability-employ-diverse-rank
+    walkability -- epa-walkability-index
+    walkability -- epa-walkability-intersection-dense-rank
+    walkability -- epa-walkability-mixed-use-ranking
+    walkability -- epa-walkability-prox-to-transit
     poverty -- families-below-poverty-level
-     -- families-with-own-children
-     -- family-status
-     -- female-veteran-status
-     -- flint-lead-2min
-     -- flint-lead-45sec
-     -- flint-lead-firstdraw
-     -- foreign-born-edu-attainment
-     -- foreign-born-population
-     -- foreign-born-region-of-origin
-     -- gender
-     -- generations
+    families -- families-with-own-children
+    families -- family-status
+    civilian_pop -- female-veteran-status
+    water -- flint-lead-2min
+    water -- flint-lead-45sec
+    water -- flint-lead-firstdraw
+    foreign -- foreign-born-edu-attainment
+    foreign -- foreign-born-population
+    foreign -- foreign-born-region-of-origin
+    sex -- gender
+    age -- generations
      -- gladstone-mo-apr-2017-nonviolent-crime
      -- gladstone-mo-apr-2017-total-crime
      -- gladstone-mo-apr-2017-total-nonviolent-crime
@@ -402,23 +429,23 @@ citizen_survey
      -- gladstone-mo-may-2017-total-nonviolent-crime
      -- gladstone-mo-may-2017-total-violent-crime
      -- gladstone-mo-may-2017-violent-crime
-     -- gross-hh-density
-     -- health-birth-rate
-     -- health-chronic-disease
-     -- health-fertility-rate
-     -- hearing-and-vision-disabilities
-     -- heating-fuel-for-housing-units
+    households -- gross-hh-density
+    health_wellness -- health-birth-rate
+    health_wellness -- health-chronic-disease
+    health_wellness -- health-fertility-rate
+    disability -- hearing-and-vision-disabilities
+    building_characteristics -- heating-fuel-for-housing-units
      -- hh-00
-     -- hispanic_origin_by_race
-     -- hmda-2012
-     -- hmda-2013
-     -- hmda-2014
-     -- hmda-2015
-     -- homeowner-vacancy-rate
+    race -- hispanic_origin_by_race
+    mortgage -- hmda-2012
+    mortgage -- hmda-2013
+    mortgage -- hmda-2014
+    mortgage -- hmda-2015
+    vacancy -- homeowner-vacancy-rate
      -- home-purchases-2012
      -- home-purchases-2013
      -- home-purchases-2014
-     -- home-value
+    valuation -- home-value
     households -- household-00-10
     households -- household-00-10-chart
     households -- householder-age-owner-occupied
@@ -427,30 +454,30 @@ citizen_survey
     income -- household-income
     households -- households__total_households
     income -- house-total-median_household_income
-     -- houseunit-total-vacant_housing_unit
+    vacancy -- houseunit-total-vacant_housing_unit
      -- housingunits-00-10
-     -- hrsa_pcsa_dentists
-     -- hrsa_pcsa_doctor_obgyn
-     -- hrsa_pcsa_doctors_obgyn_age
-     -- hrsa_pcsa_doctor_special
-     -- hrsa_pcsa_doctors_special_age
-     -- hrsa_pcsa_doctors_special_sex
-     -- hrsa_pcsa_nurse
-     -- hrsa_pcsa_obgyn_sex
-     -- hrsa_pcsa_primary_doctor
-     -- hrsa_pcsa_primary_doctor_age
-     -- hrsa_pcsa_primary_doctor_sex
+    providers -- hrsa_pcsa_dentists
+    providers -- hrsa_pcsa_doctor_obgyn
+    providers -- hrsa_pcsa_doctors_obgyn_age
+    providers -- hrsa_pcsa_doctor_special
+    providers -- hrsa_pcsa_doctors_special_age
+    providers -- hrsa_pcsa_doctors_special_sex
+    providers -- hrsa_pcsa_nurse
+    providers -- hrsa_pcsa_obgyn_sex
+    providers -- hrsa_pcsa_primary_doctor
+    providers -- hrsa_pcsa_primary_doctor_age
+    providers -- hrsa_pcsa_primary_doctor_sex
      -- hu-00
      -- hu-00-10-chart
     jobs -- hud-jobs-proximity-index
-     -- hud-low-transport-cost-index
+    cost_of_living -- hud-low-transport-cost-index
     income -- income-inequality-gini-index
     poverty -- income-to-poverty-ratio
-     -- incomplete-kitchen
-     -- incomplete-plumbing
-     -- index-dissimilarity-index-black-white
-     -- insured-and-uninsured
-     -- Insured Population by Age
+    building_characteristics -- incomplete-kitchen
+    building_characteristics -- incomplete-plumbing
+    race -- index-dissimilarity-index-black-white
+    insurance -- insured-and-uninsured
+    insurance -- Insured Population by Age
     jobs -- jobs-2002-2013
     jobs -- jobs-2003-by-industry
     jobs -- jobs-2014-by-industry
@@ -470,29 +497,29 @@ citizen_survey
     location_affordability -- lai-low-income-trans-afford
     location_affordability -- lai-median-income-families
     location_affordability -- lai-retail-access-index
-     -- language-isolation
-     -- living-arrange-adults-18-years-over
+    foreign -- language-isolation
+    households -- living-arrange-adults-18-years-over
     jobs -- local-job-density
-     -- locally-reported-nonviolent-crimes-total
-     -- locally-reported-total-crimes
-     -- locally-reported-violent-crimes-total
-     -- local-reported-non-violent-crime
-     -- local-reported-violent-crimes
+    locally_reported_crime -- locally-reported-nonviolent-crimes-total
+    locally_reported_crime -- locally-reported-total-crimes
+    locally_reported_crime -- locally-reported-violent-crimes-total
+    locally_reported_crime -- local-reported-non-violent-crime
+    locally_reported_crime -- local-reported-violent-crimes
     jobs -- local-retail-job-density
     jobs -- lodes-total-jobs-percent-change
-     -- male-veteran-status
-     -- marital-status
-     -- married-presence-children
-     -- median-age
+    civilian_pop -- male-veteran-status
+    marriage -- marital-status
+    marriage -- married-presence-children
+    age -- median-age
     labor_force -- median-age-of-workers-female
     labor_force -- median-age-of-workers-male
     labor_force -- median-age-of-workers-total
-     -- median-commute-distance
+    commuting -- median-commute-distance
     income -- median-earnings-female
     income -- median-earnings-male
     income -- median-earnings-total
-     -- median-home-rent
-     -- median-home-value
+    cost_of_living -- median-home-rent
+    valuation -- median-home-value
     income -- median-income-25-44
     income -- median-income-45-64
     income -- median-income-65-and-over
@@ -501,30 +528,30 @@ citizen_survey
     income -- median_income__foreign_born
     income -- median_income__native_born_outside_of_us
     income -- median-income-under-25
-     -- median-rent-by-numer-of-bedrooms
-     -- medicare
+    cost_of_living -- median-rent-by-numer-of-bedrooms
+    insurance -- medicare
      -- mindmixer-participants
-     -- monthly-home-rent
-     -- mortgage-status-of-owner-occupied-housing-units
-     -- motor-vehicle-dead-cycle-ped-2015
-     -- motor-vehicle-deaths-total-2015
-     -- motor-vehicle-involve-issues-3d
-     -- non_hispanic_origin_by_race
-     -- no-party-percentage
+    cost_of_living -- monthly-home-rent
+    tenure -- mortgage-status-of-owner-occupied-housing-units
+    traffic_accidents -- motor-vehicle-dead-cycle-ped-2015
+    traffic_accidents -- motor-vehicle-deaths-total-2015
+    traffic_accidents -- motor-vehicle-involve-issues-3d
+    race -- non_hispanic_origin_by_race
+    party_affiliation -- no-party-percentage
     jobs -- number-jobs-within-30-min-transit
-     -- number-of-broadband-providers
-     -- number-of-vehicles-per-housing-unit
-     -- other-party-affiliation
-     -- overcrowded-housing-units
-     -- owner-occ-00
-     -- owner-occ-00-10-chart
-     -- owner-occ-10
-     -- owner-occupied-change-00-10
-     -- owner-vs-renter-occupied
+    internet -- number-of-broadband-providers
+    vehicle_ownership -- number-of-vehicles-per-housing-unit
+    party_affiliation -- other-party-affiliation
+    tenure -- overcrowded-housing-units
+    tenure -- owner-occ-00
+    tenure -- owner-occ-00-10-chart
+    tenure -- owner-occ-10
+    tenure -- owner-occupied-change-00-10
+    tenure -- owner-vs-renter-occupied
     labor_force -- participation-in-labor-force
-     -- party-affiliation-breakdown
-     -- patents-by-category-2010-2016
-     -- patents-total-2010-2016
+    party_affiliation -- party-affiliation-breakdown
+    patents -- patents-by-category-2010-2016
+    patents -- patents-total-2010-2016
     income -- per-capita-income
     enrollment -- percent-change-of-enrollment-of-grades-1-to-4
     enrollment -- percent-change-of-enrollment-of-grades-5-to-8
@@ -533,49 +560,49 @@ citizen_survey
     enrollment -- percent-change-of-enrollment-of-preschoolers
     location_affordability -- percent-income-spent-housing
     location_affordability -- percent-income-spent-transportation
-     -- period-of-naturalization
-     -- place-of-birth-with-citizenship-status
-     -- place-of-residence-over-past-year
-     -- police-community-events-sum
-     -- police-community-events-yearly
-     -- police-shooting-incidents-sum
-     -- police-shooting-incidents-yearly
+    foreign -- period-of-naturalization
+    migration -- place-of-birth-with-citizenship-status
+    migration -- place-of-residence-over-past-year
+    locally_reported_crime -- police-community-events-sum
+    locally_reported_crime -- police-community-events-yearly
+    locally_reported_crime -- police-shooting-incidents-sum
+    locally_reported_crime -- police-shooting-incidents-yearly
      -- pop-00
      -- pop-00-10
      -- pop-00-10-chart
-     -- pop-living-with-disability
-     -- pop-total-college_graduation_rate
+    disability -- pop-living-with-disability
+    graduation_rates -- pop-total-college_graduation_rate
     enrollment -- pop-total-enrolled_in_school
-     -- pop-total-high_school_graduation_rate
-     -- pop-under-18-age-breakdowns
-     -- pop_with_2_races
+    graduation_rates -- pop-total-high_school_graduation_rate
+    age -- pop-under-18-age-breakdowns
+    race -- pop_with_2_races
     poverty -- poverty_and_low_income_persons
-     -- presence-of-children-single-female
-     -- primary-language-other-than-english
-     -- primary-language-spoken-at-home
+    families -- presence-of-children-single-female
+    language -- primary-language-other-than-english
+    language -- primary-language-spoken-at-home
     enrollment -- private-school-enrollment-by-grade
     enrollment -- public-school-enrollment-by-grade
-     -- race-american-indian-00-10-chart
-     -- race-asian-00-10-chart
-     -- race-black-00-10-chart
-     -- race-hawaiian-00-10-chart
-     -- race-hispanic-00-10-chart
-     -- race-other-00-10-chart
-     -- race-totals
-     -- race-white-00-10-chart
-     -- regional-diversity
-     -- rental-vacancy-rate
+    race -- race-american-indian-00-10-chart
+    race -- race-asian-00-10-chart
+    race -- race-black-00-10-chart
+    race -- race-hawaiian-00-10-chart
+    race -- race-hispanic-00-10-chart
+    race -- race-other-00-10-chart
+    race -- race-totals
+    race -- race-white-00-10-chart
+    jobs -- regional-diversity
+    vacancy -- rental-vacancy-rate
      -- renter-occ-00
      -- renter-occ-00-10
      -- renter-occ-00-10-chart
      -- renter-occ-10
-     -- republican-percentage
-     -- sba-12-13-14-15
-     -- school-proficiency-index
+    party_affiliation -- republican-percentage
+    credit -- sba-12-13-14-15
+    schools -- school-proficiency-index
     income -- selected-monthly-income-as-a-percentage-of-income
     income -- self_employment_income
     employment -- service-occupation-employment-16-over
-     -- single-male-presence-of-children
+    families -- single-male-presence-of-children
      -- sovi-0610-avg-index
      -- sovi-0610-index-3-class
      -- temporal__age__10_to_14
@@ -691,42 +718,42 @@ citizen_survey
      -- total-area
     poverty -- total-below-poverty-level
      -- total_city_permits
-     -- total-families
+    families -- total-families
      -- total-fires-2015
     households -- total-households-2010
      -- total-house-units-2010
-     -- total-minority-population
+    race -- total-minority-population
     employment -- total-number-unemployed
-     -- total-occupied-housing-units
-     -- total-owner-occupied-housing-units
-     -- total-pop-25-over
-     -- total-pop-over-18
-     -- total-pop-over-25-no-high-school-credentials
-     -- total-population
-     -- total-population-commuting-to-work
-     -- total-population-over-65
-     -- total-population-under-age-18
+    tenure -- total-occupied-housing-units
+    tenure -- total-owner-occupied-housing-units
+    age -- total-pop-25-over
+    age -- total-pop-over-18
+    education_attainment -- total-pop-over-25-no-high-school-credentials
+    population_demographics -- total-population
+    commuting -- total-population-commuting-to-work
+    age -- total-population-over-65
+    age -- total-population-under-age-18
     poverty -- total-pop-with-poverty-status-determined
-     -- total-receiving-food-stamps
-     -- total-registered-voters
+    poverty -- total-receiving-food-stamps
+    elections -- total-registered-voters
     labor_force -- total-working-pop-over-16
-     -- travel-time-to-work
-     -- ucr-crime-breakdowns
-     -- ucr-total-crime
+    commuting -- travel-time-to-work
+    ucr -- ucr-crime-breakdowns
+    ucr -- ucr-total-crime
     employment -- unemployment-to-pop-ratio
-     -- units-in-structure
-     -- unknown-party-percentage
+    building_characteristics -- units-in-structure
+    party_affiliation -- unknown-party-percentage
     location_affordability -- updated-gross-rent-as-a-percentage-of-income
-     -- usda_low_access_food_2010
-     -- usda_low_access_food_children
-     -- usda_low_access_food_seniors
-     -- usda_low_access_food_urban_rural
-     -- vacancy_status
-     -- vehicle-incidents
+    nutrition -- usda_low_access_food_2010
+    nutrition -- usda_low_access_food_children
+    nutrition -- usda_low_access_food_seniors
+    nutrition -- usda_low_access_food_urban_rural
+    vacancy -- vacancy_status
+    traffic_accidents -- vehicle-incidents
     poverty -- very-low-income-families-150-poverty-level
-     -- wage-of-workers
+    income -- wage-of-workers
      -- white-diff-00-10
     labor_force -- women_in_labor_force_with_birth_in_past_year
     labor_force -- women-labor-force-with-birth-past-year
     poverty -- worked-full-time-past-year-under-poverty-level
-     -- year-householder-moved-into-unit
+    domestic -- year-householder-moved-into-unit
