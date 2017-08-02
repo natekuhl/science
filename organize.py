@@ -66,29 +66,38 @@ def run():
         for pair in system_names:
             if pair[1] == dataset:
                 d['{}'.format(dataset)].append(pair[0])
-    print(d['temporal__age__25_to_34'])
+
+    """COLLECT DATASETS TO BE SKIPPED INTO A LIST"""
+
+    with open('skips.txt') as f:
+        skips = f.readlines()
+    skips = [x.strip() for x in skips]
 
     """PRINT DICTIONARY TO TXT FILE"""
 
     f =  open('dataset_groupings.txt', 'w')
     for key, value in d.items():
-        f.write('%s:%s\n' % (key, value))
+        if key in skips:
+            pass
+        else:
+            f.write('%s:%s\n' % (key, value))
     f.close()
 
     """CREATE FUNCTION FOR BUILDING GRAPH/DIAGRAM WITH DOT"""
 
     def make_digraph():
-        g = pgv.AGraph()
+        g = pgv.AGraph(strict=False,directed=True)
         g.add_node('insert_patch_here')
         for key in d.keys():
-            if len(d['{}'.format(key)]) == 1:
-                g.add_node(key)
+            if key in skips:
+                pass
             else:
                 g.add_node(key) 
                 for i in d['{}'.format(key)]:
                     g.add_edge(key,i)
-            g.write('{}'.format(args.dot_file_name))
+        g.write('generated_dot/{}'.format(args.dot_file_name))
     make_digraph()
+
 
 
 if __name__ == '__main__':
